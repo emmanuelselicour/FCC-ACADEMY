@@ -1,0 +1,67 @@
+/* ===== Responsive Fixes FCC Academy ===== */
+
+/* Empêche les débordements horizontaux sur mobile */
+html, body, nav, nav ul {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Corrige les débordements causés par padding ou border */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Assure que le menu de navigation s'adapte à l'écran */
+nav ul {
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+/* Ajuste les marges pour éviter les scrolls inutiles */
+body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Limite la largeur maximale du container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Règles spécifiques pour très petits écrans */
+@media (max-width: 480px) {
+  /* S'assure que les grids ne débordent pas */
+  .formation-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Réduction de la taille du logo */
+  .logo {
+    font-size: 2.2rem;
+  }
+
+  /* Ajustement du slogan */
+  .slogan {
+    font-size: 1rem;
+  }
+
+  /* Espacement du bandeau d'inscription */
+  .inscription-banner {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  /* Bouton du bandeau */
+  .inscription-banner a {
+    font-size: 0.9rem;
+    margin-left: 6px;
+    padding: 4px 12px;
+  }
+}
