@@ -8,6 +8,19 @@
     --success-color: #28a745;
 }
 
+/* Global reset + responsive base */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fdfdfd;
+    color: #333;
+}
+
 /* Structure Principale */
 .inscription-container {
     max-width: 800px;
@@ -16,8 +29,6 @@
     background: white;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
 }
 
 .inscription-header {
@@ -106,7 +117,8 @@
 }
 
 .form-group input:not([type="radio"]):not([type="checkbox"]),
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ddd;
@@ -115,7 +127,8 @@
     transition: all 0.3s;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group textarea:focus {
     border-color: var(--primary-color);
     outline: none;
     box-shadow: 0 0 0 3px rgba(108, 91, 123, 0.2);
@@ -137,6 +150,7 @@
     cursor: pointer;
 }
 
+/* Filières */
 .filiere-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -301,7 +315,7 @@ input:invalid + .form-error {
     display: block;
 }
 
-/* Responsive */
+/* Responsive pou Tablette ak Telefòn */
 @media (max-width: 768px) {
     .form-grid,
     .filiere-options,
@@ -310,8 +324,10 @@ input:invalid + .form-error {
     }
 
     .inscription-container {
-        margin: 1rem;
+        width: 100%;
+        margin: 0;
         padding: 1rem;
+        border-radius: 0;
     }
 
     .payment-actions {
@@ -358,7 +374,7 @@ input:invalid + .form-error {
     }
 }
 
-/* Animation */
+/* Animations */
 .fa-spinner {
     animation: spin 1s linear infinite;
 }
