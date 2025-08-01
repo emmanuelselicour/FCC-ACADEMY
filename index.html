@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCC - Florestal Créativité Company</title>
+    <link rel="icon" href="https://files.catbox.moe/w5lafp.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<style>
+:root {
+    --primary-color: #6C5B7B;
+    --secondary-color: #C06C84;
+    --accent-color: #F8B195;
+    --dark-color: #355C7D;
+    --light-color: #F9F5F0;
+    --text-color: #333;
+    --white: #fff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Preloader - 5 secondes exactement */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--light-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.preloader-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: rotate 2s linear infinite;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+body.loaded .preloader {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Bandeau d'inscription */
+.inscription-banner {
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.inscription-banner a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    transition: var(--transition);
+    margin-left: 15px;
+}
+
+.inscription-banner a:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+    color: var(--white);
+    text-align: center;
+    padding: 100px 0 60px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: var(--light-color);
+    transform: skewY(-2deg);
+    z-index: 1;
+}
+
+.logo {
+    font-size: 3.5rem;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slogan {
+    font-size: 1.4rem;
+    margin-top: 15px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--white);
+    position: sticky;
+    top: 50px;
+    z-index: 100;
+    box-shadow: var(--shadow);
+    padding: 12px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0 8px;
+}
+
+nav a {
+    color: var(--dark-color);
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Sections */
+section {
+    padding: 80px 0;
+    position: relative;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 0 100px;
+    background-color: var(--light-color);
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 14px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0.95;
+}
+
+/* Formations Section */
+.formation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.formation-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
+}
+
+.formation-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.formation-card i {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.formation-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.formation-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Galerie Section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    height: 280px;
+    transition: var(--transition);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+    border-radius: 12px;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: var(--white);
+    padding: 20px;
+    transition: var(--transition);
+}
+
+.overlay p {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.overlay small {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* À Propos Section */
+.apropos-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.apropos-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+blockquote {
+    font-style: italic;
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 20px;
+    margin: 30px 0;
+    color: var(--dark-color);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.apropos-img {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.apropos-img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.apropos-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+}
+
+/* Témoignages Section */
+.temoignages {
+    padding: 80px 0;
+    background-color: rgba(108, 91, 123, 0.05);
+    position: relative;
+}
+
+.temoignages-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 300px;
+}
+
+.temoignage {
+    position: absolute;
+    width: 100%;
+    transition: all 0.5s ease;
+    opacity: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.temoignage.active {
+    opacity: 1;
+}
+
+.temoignage-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.temoignage-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    border: 3px solid var(--secondary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.temoignage-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.temoignage-author {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.temoignage-role {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.temoignages-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.temoignages-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    font-size: 1.2rem;
+}
+
+.temoignages-btn:hover {
+    background: var(--dark-color);
+    transform: scale(1.1);
+}
+
+/* Contact Section */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(108, 91, 123, 0.1);
+    background-color: var(--white);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+    color: var(--white);
+    padding: 60px 0 30px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.footer-logo h3 {
+    font-size: 2.2rem;
+    margin: 0 0 10px;
+    color: var(--white);
+}
+
+.footer-links {
+    margin: 25px 0;
+}
+
+.footer-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.footer-contact {
+    margin-top: 20px;
+}
+
+.footer-contact p {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.copyright {
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .preloader-logo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .slogan {
+        font-size: 1.1rem;
+    }
+    
+    nav li {
+        margin: 5px;
+    }
+    
+    nav a {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    section {
+        padding: 50px 0;
+    }
+    
+    section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .apropos-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #contact-form {
+        padding: 25px;
+    }
+    
+    .temoignages-container {
+        height: 400px;
+    }
+
+    .inscription-banner {
+        font-size: 0.9rem;
+        padding: 8px 0;
+    }
+    
+    .inscription-banner a {
+        font-size: 0.9rem;
+        margin-left: 8px;
+        padding: 3px 10px;
+    }
+}
+</style>
+<body>
+    <!-- Bandeau d'inscription -->
+    <div class="inscription-banner">
+        <span>INSCRIVEZ-VOUS DÈS MAINTENANT POUR PROFITER DES PREMIÈRES PLACES !</span>
+        <a href="inscription.html">Cliquez ici</a>
+    </div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="https://files.catbox.moe/w5lafp.jpg" alt="Logo FCC" class="preloader-logo">
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo animate__animated animate__fadeInDown">FCC</h1>
+            <p class="slogan animate__animated animate__fadeInUp">Florestal Créativité Company</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil" class="active">Accueil</a></li>
+            <li><a href="#formations">Formations</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <h2 class="animate__animated animate__fadeIn">Créativité florale réinventée</h2>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">FCC forme la nouvelle génération d'artisans floraux avec des techniques innovantes et un savoir-faire unique.</p>
+            <a href="inscription.html" class="btn animate__animated animate__fadeIn animate__delay-2s">S'inscrire maintenant</a>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section id="formations">
+        <div class="container">
+            <h2>Nos Formations</h2>
+            <div class="formation-grid">
+                <div class="formation-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Initiation à l'art floral</h3>
+                    <p>Découvrez les fondamentaux de la composition florale en 10 séances intensives. Parfait pour les débutants.</p>
+                    <a href="inscription.html" class="btn" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">S'inscrire</a>
+                </div>
+                <div class="formation-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Formation professionnelle</h3>
+                    <p>Devenez artisan floral certifié avec notre programme complet de 6 mois. Diplôme reconnu à l'issue.</p>
+                    <a href="inscription.html" class="btn" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">S'inscrire</a>
+                </div>
+                <div class="formation-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Ateliers créatifs</h3>
+                    <p>Perfectionnez votre style avec nos masterclasses thématiques animées par des experts internationaux.</p>
+                    <a href="inscription.html" class="btn" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie Section -->
+    <section id="galerie">
+        <div class="container">
+            <h2>Nos Réalisations</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/60jm4d.jpg" alt="Atelier floral">
+                    <div class="overlay">
+                        <p>"L'harmonie parfaite entre technique et inspiration"</p>
+                        <small>Workshop Avancé - 2023</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/e8yt78.jpg" alt="Composition florale">
+                    <div class="overlay">
+                        <p>"Chaque création raconte une histoire unique"</p>
+                        <small>Collection Printemps</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/6ozibs.jpg" alt="Élèves en formation">
+                    <div class="overlay">
+                        <p>"Notre fierté: voir éclore les talents de demain"</p>
+                        <small>Promotion 2023</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/pqf12p.jpg" alt="Équipe FCC">
+                    <div class="overlay">
+                        <p>"Une équipe passionnée pour vous guider"</p>
+                        <small>Nos formateurs</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/d9aump.jpg" alt="Atelier pratique">
+                    <div class="overlay">
+                        <p>"Apprendre en faisant, notre philosophie"</p>
+                        <small>Session pratique</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/e6g6jd.jpg" alt="Exposition florale">
+                    <div class="overlay">
+                        <p>"Mettre en valeur le talent de nos élèves"</p>
+                        <small>Exposition annuelle</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/jj09zm.jpg" alt="Formation avancée">
+                    <div class="overlay">
+                        <p>"Techniques avancées pour artistes floraux"</p>
+                        <small>Masterclass</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/w5lafp.jpg" alt="Création événementielle">
+                    <div class="overlay">
+                        <p>"L'art floral au service des événements"</p>
+                        <small>Mariage élégant</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/y2jtxv.jpg" alt="Détail floral">
+                    <div class="overlay">
+                        <p>"La perfection est dans les détails"</p>
+                        <small>Création exclusive</small>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://files.catbox.moe/4tablo.jpg" alt="Élève en action">
+                    <div class="overlay">
+                        <p>"Chaque geste compte dans l'art floral"</p>
+                        <small>Atelier pratique</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À Propos Section -->
+    <section id="apropos">
+        <div class="container">
+            <h2>Notre Philosophie</h2>
+            <div class="apropos-content">
+                <div class="apropos-text">
+                    <p>Fondée en 2024, FCC (Florestal Créativité Company) a révolutionné l'enseignement de l'art floral en Haïti en combinant techniques traditionnelles et approches contemporaines.</p>
+                    <p>Notre mission va au-delà de la simple formation technique : nous cultivons la sensibilité artistique et l'expression personnelle de chaque élève.</p>
+                    <blockquote>
+                        "Chez FCC, nous ne créons pas simplement des arrangements floraux, nous formons des artistes complets."
+                    </blockquote>
+                    <p>Avec des collaborations prestigieuses, FCC s'impose comme la référence en matière de formation florale créative.</p>
+                    <a href="inscription.html" class="btn" style="margin-top: 20px; display: inline-block;">Rejoignez-nous</a>
+                </div>
+                <div class="apropos-img">
+                    <img src="https://files.catbox.moe/loezej.jpg" alt="Équipe pédagogique FCC">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section id="temoignages" class="temoignages">
+        <div class="container">
+            <h2>Témoignages</h2>
+            <div class="temoignages-container">
+                <div class="temoignage active">
+                    <div class="temoignage-card">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Client" class="temoignage-avatar">
+                        <p class="temoignage-text">"La formation FCC a transformé ma passion en véritable métier. Les techniques apprises sont inestimables. Je recommande vivement à tous ceux qui veulent se lancer dans l'art floral."</p>
+                        <h4 class="temoignage-author">Marie L. François</h4>
+                        <p class="temoignage-role">Ancienne élève, Fleuriste professionnelle</p>
+                    </div>
+                </div>
+                
+                <div class="temoignage">
+                    <div class="temoignage-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="temoignage-avatar">
+                        <p class="temoignage-text">"L'approche créative de FCC est unique. J'ai pu développer mon propre style floral grâce à leurs conseils avisés. Le suivi après la formation est exceptionnel."</p>
+                        <h4 class="temoignage-author">Jean R. Desormes</h4>
+                        <p class="temoignage-role">Élève en formation avancée</p>
+                    </div>
+                </div>
+                
+                <div class="temoignage">
+                    <div class="temoignage-card">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client" class="temoignage-avatar">
+                        <p class="temoignage-text">"Les formateurs sont exceptionnels. J'ai appris plus en 3 mois qu'en 2 ans d'auto-formation. L'ambiance est à la fois professionnelle et conviviale."</p>
+                        <h4 class="temoignage-author">Sophie P. Augustin</h4>
+                        <p class="temoignage-role">Ancienne élève, Créatrice d'événements</p>
+                    </div>
+                </div>
+                
+                <div class="temoignage">
+                    <div class="temoignage-card">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="temoignage-avatar">
+                        <p class="temoignage-text">"Le réseau professionnel que j'ai construit grâce à FCC m'a ouvert de nombreuses portes. Aujourd'hui, je gagne bien ma vie grâce à cette formation."</p>
+                        <h4 class="temoignage-author">Marc A. Joseph</h4>
+                        <p class="temoignage-role">Propriétaire de boutique florale</p>
+                    </div>
+                </div>
+                
+                <div class="temoignage">
+                    <div class="temoignage-card">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Client" class="temoignage-avatar">
+                        <p class="temoignage-text">"Les ateliers pratiques sont fantastiques. On apprend en faisant, c'est la meilleure méthode. Les installations sont modernes et le matériel de qualité."</p>
+                        <h4 class="temoignage-author">Laura S. Méhu</h4>
+                        <p class="temoignage-role">Élève en initiation</p>
+                    </div>
+                </div>
+                
+                <div class="temoignage">
+                    <div class="temoignage-card">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Client" class="temoignage-avatar">
+                        <p class="temoignage-text">"FCC m'a appris à voir la beauté dans chaque fleur et à la mettre en valeur de manière professionnelle. Leur approche pédagogique est remarquable."</p>
+                        <h4 class="temoignage-author">Pierre E. Laurent</h4>
+                        <p class="temoignage-role">Artisan floral indépendant</p>
+                    </div>
+                </div>
+                
+                <div class="temoignage">
+                    <div class="temoignage-card">
+                        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Client" class="temoignage-avatar">
+                        <p class="temoignage-text">"Le suivi après la formation est exceptionnel. L'équipe reste disponible pour conseils et questions. J'ai même obtenu des contrats grâce à leur réseau."</p>
+                        <h4 class="temoignage-author">Nathalie D. Charles</h4>
+                        <p class="temoignage-role">Ancienne élève, Entrepreneure</p>
+                    </div>
+                </div>
+                
+                <div class="temoignage">
+                    <div class="temoignage-card">
+                        <img src="https://randomuser.me/api/portraits/men/88.jpg" alt="Client" class="temoignage-avatar">
+                        <p class="temoignage-text">"La qualité de l'enseignement à FCC dépasse tout ce que j'ai pu voir ailleurs. Vraiment professionnel! Les formateurs sont des experts reconnus."</p>
+                        <h4 class="temoignage-author">Daniel F. Saint-Louis</h4>
+                        <p class="temoignage-role">Élève en formation professionnelle</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="temoignages-controls">
+                <button class="temoignages-btn" id="prevTemoignage"><i class="fas fa-chevron-left"></i></button>
+                <button class="temoignages-btn" id="nextTemoignage"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <form id="contact-form" action="https://formspree.io/f/mrblljoj" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Votre nom complet" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Votre adresse email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Votre numéro de téléphone">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Votre message..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>FCC</h3>
+                    <p>Florestal Créativité Company</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-envelope"></i> Florestalcreativecompany@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ouanaminthe, Haïti</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FCC - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+<script>
+// Préloader - 5 secondes exactement
+window.addEventListener('load', function() {
+    const preloader = document.querySelector('.preloader');
+    
+    // Démarrer le compte à rebours de 5 secondes
+    setTimeout(function() {
+        preloader.style.opacity = '0';
+        document.body.classList.add('loaded');
+        
+        // Retirer complètement après l'animation
+        setTimeout(function() {
+            preloader.style.display = 'none';
+        }, 500); // Correspond à la durée de la transition CSS
+    }, 5000); // 5000ms = 5 secondes
+
+    // Bloquer les interactions pendant le chargement
+    preloader.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }, true);
+});
+
+// Navigation active
+const navLinks = document.querySelectorAll('nav a');
+const sections = document.querySelectorAll('section');
+
+function updateActiveNav() {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if(window.scrollY >= (sectionTop - 100)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+updateActiveNav();
+
+// Témoignages Carousel optimisé
+const temoignages = document.querySelectorAll('.temoignage');
+const prevBtn = document.getElementById('prevTemoignage');
+const nextBtn = document.getElementById('nextTemoignage');
+let currentTemoignage = 0;
+let autoSlideInterval;
+
+function showTemoignage(index) {
+    temoignages.forEach((temoignage, i) => {
+        temoignage.style.opacity = '0';
+        temoignage.classList.remove('active');
+        
+        if(i === index) {
+            setTimeout(() => {
+                temoignage.style.opacity = '1';
+                temoignage.classList.add('active');
+            }, 50);
+        }
+    });
+    currentTemoignage = index;
+}
+
+function nextTemoignage() {
+    const nextIndex = (currentTemoignage + 1) % temoignages.length;
+    showTemoignage(nextIndex);
+}
+
+function prevTemoignage() {
+    const prevIndex = (currentTemoignage - 1 + temoignages.length) % temoignages.length;
+    showTemoignage(prevIndex);
+}
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(nextTemoignage, 8000); // Changé à 8s pour meilleure UX
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
+
+// Initialisation
+showTemoignage(0);
+startAutoSlide();
+
+// Événements
+nextBtn.addEventListener('click', () => {
+    nextTemoignage();
+    stopAutoSlide();
+    startAutoSlide();
+});
+
+prevBtn.addEventListener('click', () => {
+    prevTemoignage();
+    stopAutoSlide();
+    startAutoSlide();
+});
+
+// Pause au survol
+const temoignagesContainer = document.querySelector('.temoignages-container');
+if(temoignagesContainer) {
+    temoignagesContainer.addEventListener('mouseenter', stopAutoSlide);
+    temoignagesContainer.addEventListener('mouseleave', startAutoSlide);
+}
+
+// Formulaire de contact avec Formspree
+const contactForm = document.getElementById('contact-form');
+if(contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Afficher un message de succès
+        const successMessage = document.createElement('div');
+        successMessage.className = 'form-success';
+        successMessage.innerHTML = `
+            <p>Merci pour votre message! Nous vous contacterons sous peu.</p>
+        `;
+        contactForm.appendChild(successMessage);
+        
+        // Soumettre le formulaire
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if(response.ok) {
+                contactForm.reset();
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 5000);
+            }
+        })
+        .catch(error => {
+            successMessage.innerHTML = `
+                <p>Une erreur s'est produite. Veuillez réessayer.</p>
+            `;
+        });
+    });
+}
+
+// Smooth scrolling amélioré
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if(targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+            
+            // Mise à jour de la navigation active
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+        }
+    });
+});
+
+// Optimisation du scroll pour les mobiles
+let lastKnownScrollPosition = 0;
+let ticking = false;
+
+window.addEventListener('scroll', function() {
+    lastKnownScrollPosition = window.scrollY;
+    
+    if(!ticking) {
+        window.requestAnimationFrame(function() {
+            updateActiveNav();
+            ticking = false;
+        });
+        
+        ticking = true;
+    }
+});
+
+</script>
+    <script src="script.js"></script>
+</body>
+</html>
