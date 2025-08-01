@@ -1,173 +1,147 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - FCC Academy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="responsive.css">
-    
-    <meta name="formspree-verify" content="formspree-verify-code">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscription - FCC Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <div class="inscription-container">
-        <div class="inscription-header">
-            <h1><i class="fas fa-user-graduate"></i> Inscription FCC Academy</h1>
-            <div class="progress-bar">
-                <div class="progress-step active">1. Informations</div>
-                <div class="progress-step">2. Paiement</div>
-                <div class="progress-step">3. Confirmation</div>
-            </div>
-        </div>
-
-        <!-- Étape 1 : Informations -->
-        <form id="inscriptionForm" class="step-form active" action="https://formspree.io/f/mrblljoj" method="POST">
-            <h2><i class="fas fa-user-circle"></i> Informations personnelles</h2>
-            
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="nom">Nom complet*</label>
-                    <input type="text" id="nom" name="nom_complet" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Sexe*</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="sexe" value="Masculin" required> Masculin</label>
-                        <label><input type="radio" name="sexe" value="Féminin"> Féminin</label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Téléphone*</label>
-                    <input type="tel" id="phone" name="telephone" pattern="[0-9]{8,14}" required>
-                    <div class="form-error">Format: 8 à 14 chiffres</div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="dob">Date de naissance*</label>
-                    <input type="date" id="dob" name="date_naissance" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="lieu_naissance">Lieu de naissance*</label>
-                    <input type="text" id="lieu_naissance" name="lieu_naissance" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="adresse">Adresse actuelle*</label>
-                    <input type="text" id="adresse" name="adresse" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Adresse email*</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-            </div>
-            
-            <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
-            
-            <div class="form-group">
-                <label>Filière* (choisir une seule)</label>
-                <div class="filiere-options">
-                    <label><input type="radio" name="filiere" value="Décoration" required> Décoration</label>
-                    <label><input type="radio" name="filiere" value="Cuisine & Pâtisserie"> Cuisine & Pâtisserie</label>
-                    <label><input type="radio" name="filiere" value="Informatique"> Informatique</label>
-                    <label><input type="radio" name="filiere" value="Maquillage"> Maquillage</label>
-                    <label><input type="radio" name="filiere" value="Crochet"> Crochet</label>
-                    <label class="autre-option">
-                        <input type="radio" name="filiere" value="Autre"> Autre (précisez):
-                        <input type="text" id="autre_filiere" name="autre_filiere_detail" disabled>
-                    </label>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="duree">Durée de la formation*</label>
-                <input type="text" id="duree" name="duree_formation" readonly>
-            </div>
-            
-            <div class="form-group checkbox-group">
-                <label>
-                    <input type="checkbox" name="certification" required>
-                    Je certifie que les informations sont exactes.
-                </label>
-                <label>
-                    <input type="checkbox" name="engagement" required>
-                    Je m'engage à respecter les règlements de FCC Academy.
-                </label>
-            </div>
-            
-            <div class="form-group signature-group">
-                <label for="signature">Signature de l'élève*</label>
-                <input type="text" id="signature" name="signature_eleve" required>
-                <div class="date-signature">
-                    <span>Date: <span id="current-date"></span></span>
-                    <span class="fcc-signature">FLORESTAL CRÉATIVITÉ</span>
-                </div>
-            </div>
-            
-            <!-- Champ caché pour la date -->
-            <input type="hidden" name="date_inscription" id="date_hidden">
-            
-            <button type="button" id="btnPaiement" class="btn">
-                <i class="fas fa-arrow-right"></i> Confirmer et procéder au paiement
-            </button>
-        </form>
-
-        <!-- Étape 2 : Paiement -->
-        <div class="step-form payment-step">
-            <h2><i class="fas fa-credit-card"></i> Paiement</h2>
-            <div class="payment-instructions">
-                <p>Veuillez effectuer le paiement via :</p>
-                
-                <div class="payment-method">
-                    <div class="payment-number">
-                        <img src="img/natcash.png" alt="NatCash" class="payment-logo">
-                        <span>+509 42 56 67 55</span>
-                    </div>
-                    <div class="payment-number">
-                        <img src="img/moncash.png" alt="MonCash" class="payment-logo">
-                        <span>+509 42 56 67 55</span>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="transaction_id">Numéro de transaction (14 chiffres)*</label>
-                    <input type="text" id="transaction_id" name="transaction_id" 
-                           pattern="[0-9]{14}" title="14 chiffres exactement" required>
-                    <div class="form-error">Doit contenir exactement 14 chiffres</div>
-                </div>
-                
-                <div class="payment-actions">
-                    <button type="button" class="btn prev-step">
-                        <i class="fas fa-arrow-left"></i> Retour
-                    </button>
-                    <button type="submit" id="btnSubmit" class="btn" form="inscriptionForm">
-                        <i class="fas fa-paper-plane"></i> Envoyer ma candidature
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Étape 3 : Confirmation -->
-        <div class="step-form confirmation-step">
-            <div class="confirmation-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h2>Inscription confirmée !</h2>
-            <p>Merci <span id="confirm-name"></span> pour votre inscription.</p>
-            <div class="confirmation-details">
-                <p><i class="fas fa-envelope"></i> Vous recevrez un email de confirmation</p>
-                <p><i class="fas fa-calendar-day"></i> Date d'inscription : <span id="confirm-date"></span></p>
-            </div>
-            <a href="index.html" class="btn">
-                <i class="fas fa-home"></i> Retour à l'accueil
-            </a>
-        </div>
+  <div class="inscription-container">
+    <div class="inscription-header">
+      <h1><i class="fas fa-user-graduate"></i> Inscription FCC Academy</h1>
+      <div class="progress-bar">
+        <div class="progress-step active">1. Informations</div>
+        <div class="progress-step">2. Paiement</div>
+        <div class="progress-step">3. Confirmation</div>
+      </div>
     </div>
 
-    <script src="inscription.js"></script>
+    <!-- Étape 1 -->
+    <form id="inscriptionForm" class="step-form active" action="https://formspree.io/f/mrblljoj" method="POST">
+      <h2><i class="fas fa-user-circle"></i> Informations personnelles</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nom">Nom complet*</label>
+          <input type="text" id="nom" name="nom_complet" required />
+        </div>
+        <div class="form-group">
+          <label>Sexe*</label>
+          <div class="radio-group">
+            <label><input type="radio" name="sexe" value="Masculin" required /> Masculin</label>
+            <label><input type="radio" name="sexe" value="Féminin" /> Féminin</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone*</label>
+          <input type="tel" id="phone" name="telephone" pattern="[0-9]{8,14}" required />
+          <div class="form-error">Format: 8 à 14 chiffres</div>
+        </div>
+        <div class="form-group">
+          <label for="dob">Date de naissance*</label>
+          <input type="date" id="dob" name="date_naissance" required />
+        </div>
+        <div class="form-group">
+          <label for="lieu_naissance">Lieu de naissance*</label>
+          <input type="text" id="lieu_naissance" name="lieu_naissance" required />
+        </div>
+        <div class="form-group">
+          <label for="adresse">Adresse actuelle*</label>
+          <input type="text" id="adresse" name="adresse" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Adresse email*</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+      </div>
+
+      <h2><i class="fas fa-graduation-cap"></i> Formation</h2>
+      <div class="form-group">
+        <label>Filière* (choisir une seule)</label>
+        <div class="filiere-options">
+          <label><input type="radio" name="filiere" value="Décoration" required /> Décoration</label>
+          <label><input type="radio" name="filiere" value="Cuisine & Pâtisserie" /> Cuisine & Pâtisserie</label>
+          <label><input type="radio" name="filiere" value="Informatique" /> Informatique</label>
+          <label><input type="radio" name="filiere" value="Maquillage" /> Maquillage</label>
+          <label><input type="radio" name="filiere" value="Crochet" /> Crochet</label>
+          <label class="autre-option">
+            <input type="radio" name="filiere" value="Autre" /> Autre (précisez):
+            <input type="text" id="autre_filiere" name="autre_filiere_detail" disabled />
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="duree">Durée de la formation*</label>
+        <input type="text" id="duree" name="duree_formation" readonly />
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label><input type="checkbox" name="certification" required /> Je certifie que les informations sont exactes.</label>
+        <label><input type="checkbox" name="engagement" required /> Je m'engage à respecter les règlements de FCC Academy.</label>
+      </div>
+
+      <div class="form-group signature-group">
+        <label for="signature">Signature de l'élève*</label>
+        <input type="text" id="signature" name="signature_eleve" required />
+        <div class="date-signature">
+          <span>Date: <span id="current-date"></span></span>
+          <span class="fcc-signature">FLORESTAL CRÉATIVITÉ</span>
+        </div>
+      </div>
+
+      <input type="hidden" name="date_inscription" id="date_hidden" />
+
+      <button type="button" id="btnPaiement" class="btn">
+        <i class="fas fa-arrow-right"></i> Confirmer et procéder au paiement
+      </button>
+    </form>
+
+    <!-- Étape 2 -->
+    <div class="step-form payment-step">
+      <h2><i class="fas fa-credit-card"></i> Paiement</h2>
+      <div class="payment-instructions">
+        <p>Veuillez effectuer le paiement via :</p>
+        <div class="payment-method">
+          <div class="payment-number">
+            <img src="img/natcash.png" class="payment-logo" />
+            <span>+509 42 56 67 55</span>
+          </div>
+          <div class="payment-number">
+            <img src="img/moncash.png" class="payment-logo" />
+            <span>+509 42 56 67 55</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="transaction_id">Numéro de transaction (14 chiffres)*</label>
+          <input type="text" id="transaction_id" name="transaction_id" pattern="[0-9]{14}" required />
+          <div class="form-error">Doit contenir exactement 14 chiffres</div>
+        </div>
+
+        <div class="payment-actions">
+          <button type="button" class="btn prev-step"><i class="fas fa-arrow-left"></i> Retour</button>
+          <button type="submit" id="btnSubmit" class="btn" form="inscriptionForm">
+            <i class="fas fa-paper-plane"></i> Envoyer ma candidature
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Étape 3 -->
+    <div class="step-form confirmation-step">
+      <div class="confirmation-icon"><i class="fas fa-check-circle"></i></div>
+      <h2>Inscription confirmée !</h2>
+      <p>Merci <span id="confirm-name"></span> pour votre inscription.</p>
+      <div class="confirmation-details">
+        <p><i class="fas fa-envelope"></i> Vous recevrez un email de confirmation</p>
+        <p><i class="fas fa-calendar-day"></i> Date d'inscription : <span id="confirm-date"></span></p>
+      </div>
+      <a href="index.html" class="btn"><i class="fas fa-home"></i> Retour à l'accueil</a>
+    </div>
+  </div>
+
+  <script src="inscription.js"></script>
 </body>
 </html>
