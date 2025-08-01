@@ -358,7 +358,7 @@ input:invalid + .form-error {
     }
 }
 
-/* Animations */
+/* Animation */
 .fa-spinner {
     animation: spin 1s linear infinite;
 }
